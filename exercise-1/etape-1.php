@@ -1,16 +1,15 @@
 <?php
-	include 'etape-3.php';
 
 	class Form {
 		private $methodUrl = 'etape-3.php';
 		private $inputs = [];
 
 		public function printForm() {
-			return '<form method="'.$this->methodUrl.'" action="post">'.$this->printInputs().'</form>';
+			return '<form method="post" action="'.$this->methodUrl.'">'.$this->printInputs().'</form>';
 		}
 
-		public function createInput($type) {
-			$input = '<input type=".$type."></input>';
+		public function createInput($type, $name) {
+			$input = '<input type="'.$type.'" name="'.$name.'"></input>';
 			array_push($this->inputs, $input);
 		}
 
@@ -63,7 +62,7 @@
 	<?php 
 
 		$form = new Form();
-		$form->createInput('text');
+		$form->createInput('number', 'nom');
 		$form->createSelect(['a', 'b', 'c']);
 		$form->createBtnSubmit('Submit');
 		$form->createTextarea();
