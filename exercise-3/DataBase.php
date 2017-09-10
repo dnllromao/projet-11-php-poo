@@ -50,15 +50,21 @@ class DataBase {
 			die('Error: '.$e->getMessage());
 		}
 
-		var_dump($resp);
 	}
 
-	static function updateUserName() {
-		
-	}
+	static function updateUser($options) {
+		$req = self::$db->prepare('UPDATE users SET username = :username, email = :email WHERE id=:id');
 
-	static function updateUserEmail() {
-		
+		try {
+			$resp = $req->execute([
+				'username' => $options['username'],
+				'email' => $options['email'],
+				'id' => $options['id']
+			]);
+			var_dump($resp);
+		} catch (Exception $e){
+			die('Error: '.$e->getMessage());
+		}
 	}
 
 	static function deleteUser() {

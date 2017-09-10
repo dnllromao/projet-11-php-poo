@@ -41,6 +41,11 @@
 	?>
 		<div class="connected">
 			<h3>You're connected, <?= $_SESSION['username'] ?></h3>
+			<form action="#" method="post">
+				<label>Username: <input type="text" name="username" value="<?= $_SESSION['username']?>"></label>
+				<label>Email: <input type="email" name="email" value="<?= $_SESSION['email']?>"></label>
+				<input type="submit" value="update" name="action">
+			</form>
 		</div>
 	<?php 
 		endif;
