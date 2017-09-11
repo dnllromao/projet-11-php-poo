@@ -37,7 +37,7 @@ class User {
 			]);
 
 			$this->setId($id);
-			
+
 			$_SESSION['id'] = $this->id;
 			$_SESSION['username'] = $this->username;
 			$_SESSION['email'] = $this->email;
