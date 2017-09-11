@@ -2,9 +2,6 @@
 
 Autoloader::register(); 
 
-/*session_unset();
-session_destroy();*/
-
 $database = new DataBase([
 	'host' => 'localhost',
 	'dbname' => 'homework',
@@ -12,6 +9,7 @@ $database = new DataBase([
 	'password' => ''
 ]);
 
+// connect user from session 
 if(!empty($_SESSION)) {
 
 	$email = (!empty($_SESSION['email']))? $_SESSION['email']: null;
@@ -24,14 +22,14 @@ if(!empty($_SESSION)) {
 	]);
 }
 
+var_dump($anonimus);
 if(empty($_POST)) {
 	return;
 }
 
-
-
 switch ($_POST['action']) {
 	case 'register':
+
 		$username = (!empty($_POST['username']))? $_POST['username']: null;
 		$email = (!empty($_POST['email']))? $_POST['email']: null;
 		$password = (!empty($_POST['password']))? $_POST['password']: null;
@@ -68,12 +66,20 @@ switch ($_POST['action']) {
 
 		$username = (!empty($_POST['username']))? $_POST['username']: null;
 		$email = (!empty($_POST['email']))? $_POST['email']: null;
-		var_dump($username);
-		var_dump($email);
+
 		$anonimus->update([
 			'username' => $username,
 			'email' => $email
 		]);
+
+		break;
+
+	case 'delete':
+
+		$id = $_SESSION['id'];
+
+		$anonimus->delete(['id' => $id]);
+		unset($anonimus);
 
 		break;
 	
@@ -82,5 +88,5 @@ switch ($_POST['action']) {
 		break;
 }
 
-
+var_dump($anonimus);
 

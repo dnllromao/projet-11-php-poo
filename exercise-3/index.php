@@ -10,7 +10,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>Poo</title>
 </head>
 <body>
 	<div class="register">
@@ -30,26 +30,32 @@
 			<input type="submit" value="connect" name="action">
 		</form>
 	</div>
-	<div class="disconnect">
-		<h4>Disconnect</h4>
-		<form action="#" method="post">
-			<input type="submit" value="disconnect" name="action">
-		</form>
-	</div>
-	<?php 
-		if(isset($_SESSION['username'])):
-	?>
+
+	<?php if(isset($_SESSION['username'])): ?>
 		<div class="connected">
 			<h3>You're connected, <?= $_SESSION['username'] ?></h3>
-			<form action="#" method="post">
-				<label>Username: <input type="text" name="username" value="<?= $_SESSION['username']?>"></label>
-				<label>Email: <input type="email" name="email" value="<?= $_SESSION['email']?>"></label>
-				<input type="submit" value="update" name="action">
-			</form>
+			<div class="disconnect">
+				<h4>Disconnect</h4>
+				<form action="#" method="post">
+					<input type="submit" value="disconnect" name="action">
+				</form>
+			</div>
+			<div class="update">
+				<h4>Update</h4>
+				<form action="#" method="post">
+					<label>Username: <input type="text" name="username" value="<?= $_SESSION['username']?>"></label>
+					<label>Email: <input type="email" name="email" value="<?= $_SESSION['email']?>"></label>
+					<input type="submit" value="update" name="action">
+				</form>
+			</div>
+			<div class="delete">
+				<h4>Delete</h4>
+				<form action="#" method="post">
+					<input type="submit" value="delete" name="action">
+				</form>
+			</div>
 		</div>
-	<?php 
-		endif;
-	?>
+	<?php endif; ?>
 	
 </body>
 </html>
