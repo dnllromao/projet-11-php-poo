@@ -19,6 +19,7 @@ class DataBase {
 
 		try {
 			$resp = $req->execute($options);
+			var_dump(self::$db->lastInsertId());
 		} catch (Exception $e){
 			die('Error: '.$e->getMessage());
 		}
@@ -61,14 +62,18 @@ class DataBase {
 				'email' => $options['email'],
 				'id' => $options['id']
 			]);
-			var_dump($resp);
 		} catch (Exception $e){
 			die('Error: '.$e->getMessage());
 		}
 	}
 
-	static function deleteUser() {
-		
+	static function deleteUser($id) {
+
+		try {
+			$req = self::$db->query('DELETE FROM users WHERE id = '.$id);
+		} catch (Exception $e){
+			die('Error: '.$e->getMessage());
+		}
 	}
 }
 
