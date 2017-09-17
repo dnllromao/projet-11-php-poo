@@ -19,7 +19,6 @@ class DataBase {
 
 		try {
 			$resp = $req->execute($options);
-			var_dump(self::$db->lastInsertId());
 		} catch (Exception $e){
 			die('Error: '.$e->getMessage());
 		}
@@ -37,7 +36,7 @@ class DataBase {
 			die('Error: '.$e->getMessage());
 		}
 
-		$user = $get->fetchAll(PDO::FETCH_ASSOC)[0];
+		$user = $get->fetch();
 		return $user;
 	}
 

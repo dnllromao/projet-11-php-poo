@@ -22,7 +22,7 @@ if(!empty($_SESSION)) {
 	]);
 }
 
-var_dump($anonimus);
+
 if(empty($_POST)) {
 	return;
 }
@@ -88,5 +88,4 @@ switch ($_POST['action']) {
 		break;
 }
 
-var_dump($anonimus);
 
